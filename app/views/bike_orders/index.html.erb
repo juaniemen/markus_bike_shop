@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+  <h1>Bike Orders</h1>
+  <table class="table">
+    <thead>
+      <tr>
+          <th colspan="3"></th>
+      </tr>
+    </thead>
+<tbody>
+      <% @bike_orders.each do |bike_order| %>
+        <tr>
+          <td><%= bike_order.created_at %></td>
+            <td><%= link_to 'Show', bike_order %></td>
+          <td><%= link_to 'Edit', edit_bike_order_path(bike_order) %></td>
+          <td><%= link_to 'Destroy', bike_order, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br />
+  <%= link_to 'New Bike Order', new_bike_order_path, class: "btn btn-success min-width-btn" %>
+</div>

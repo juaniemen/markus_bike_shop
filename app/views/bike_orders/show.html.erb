@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <%= render 'order_details', bike_order: @bike_order %>
+<p>Order creation: <%= @bike_order.created_at.to_formatted_s(:long) %></p>
+<p>Order last update: <%= @bike_order.updated_at.to_formatted_s(:long) %></p>
+<%= link_to 'Edit', edit_bike_order_path(@bike_order), class: "btn btn-primary min-width-btn" %>
+  <%= link_to 'Back', bike_orders_path, class: "btn btn-light min-width-btn" %>
+</div>

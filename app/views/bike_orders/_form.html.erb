@@ -1,0 +1,25 @@
+<%= form_with(model: bike_order, id: 'bike-order-form', local: true, data: { turbo: false }) do |form| %>
+  <%= form.hidden_field :id %>
+  <div class="form-group mb-2"> 
+    <%= form.fields_for :bike_order_items do |ff| %>
+      <%= ff.label ff.object.ctype, class: "form-label" %>
+      <%= ff.select :component_id, Component.components_by_component_type(ff.object.ctype).map { |i| [i.name, i.id] }, { include_blank: "Select #{ff.object.ctype}" }, { class: "form-select select-component" } %>
+    <% end %>
+  </div>
+
+    <div class="form-group my-5">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+<% if bike_order.errors.any? %>
+    <div id="error_explanation">
+      <h2>Following error were found (<%= pluralize(bike_order.errors.count, "error") %>):</h2>
+      <ul>
+        <% bike_order.errors.each do |error| %>
+          <li><%= error.attribute == :custom ? error.type : error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+

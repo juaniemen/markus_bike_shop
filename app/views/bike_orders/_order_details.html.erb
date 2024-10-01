@@ -1,0 +1,48 @@
+<% bike_order = @bike_order %>
+<div id='order-details'>
+  <div class='container order-items-components'>
+  <div class="row"><div class="col-md-8 col-lg-9"><h2 class="text-center">Order Details</h2> </div></div>
+    <% bike_order.bike_order_items.each do |boi| %>
+      <% next unless boi.component %>
+      <div class="row">
+        <div class="col-md-8 col-lg-9">
+          <p class='my-1'><%= boi.component.c_type %>: <%= boi.component.name %></p>
+        </div>
+        <div class="col-md-4 col-lg-3">
+          <p class='my-0'>
+            <% if boi.warnings %>
+              <del><%= boi.component.price %>€</del>
+            <% end %>
+          <%= boi.price %>€
+          </p>
+        </div>
+      </div>
+      <% if boi.warnings %>
+        <div class="row">
+          <div class="col-md-8 alert alert-danger small py-0 mx-4">
+            &#8627;  <%= boi.warnings %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <hr class="bg-danger border-2 border-top border-primary" />
+  <div class='container'>
+    <div class="row fw-bold">
+      <div class="col-md-8 col-lg-9">
+        <p>Total</p>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <%= bike_order.bike_order_items.map{|boi| boi.price.to_i}.sum %>€
+      </div>
+    </div>
+  </div>
+
+  <div class='container order-item-warnings'>
+    <%= bike_order.warnings %>
+  </div>
+</div>
+
+                
+
+

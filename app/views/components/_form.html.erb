@@ -1,0 +1,27 @@
+<%= form_with(model: component) do |form| %>
+  <% if component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(component.errors.count, "error") %> prohibited this component from being saved:</h2>
+      <ul>
+        <% component.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+  <div class="form-group mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class:"form-control" %>
+  </div>
+  <div class="form-group mb-3">
+    <%= form.label :c_type, class: "form-label" %>
+    <%= form.text_field :c_type, class:"form-control" %>
+  </div>
+  <div class="form-group mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

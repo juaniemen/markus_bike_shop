@@ -1,0 +1,40 @@
+# docker-compose.yml
+
+  version: "3.8"
+  networks:
+    backend:
+    frontend:
+  services:
+    db:
+      image: postgres:14.2-alpine
+      expose: 
+        - "5433"
+      ports:
+        - "5433:5432"
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+      networks:
+        - backend
+      command: -p 5433
+    app:
+      build: .
+      tty: true
+      volumes:
+        - .:/app
+      working_dir: /app
+      environment:
+        DB: postgresql
+        DB_HOST: db
+        DB_PORT: 5433
+        DB_USERNAME: postgres
+        DB_PASSWORD: postgres
+        BUNDLE_GEMFILE: /app/Gemfile
+      command: /app/script/entrypoint.sh
+      networks:
+        - backend
+        - frontend
+      ports:
+        - "3000:3000"
+      depends_on:
+        - db

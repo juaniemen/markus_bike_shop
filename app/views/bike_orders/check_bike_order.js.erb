@@ -1,0 +1,5 @@
+$("#order-details").replaceWith("<%= j(render partial: "order_details") %>");
+$(".select-component option").prop('disabled', false);
+<% components_not_available(@bike_order.bike_order_items.map(&:component).uniq.compact).each do |c_unavailable| %>
+    $('.select-component option[value="<%= c_unavailable.id %>"]').prop('disabled', true);
+<% end %>

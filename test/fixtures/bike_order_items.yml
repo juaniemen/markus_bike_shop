@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bike_orders: one
+  components: one
+  price: 9.99
+
+two:
+  bike_orders: two
+  components: two
+  price: 9.99

@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row bt-6">
+    <div class="col-lg-6">
+      <h1>Editing Bike Order</h1>
+
+      <%= render 'form', bike_order: @bike_order %>
+
+    </div>
+    <div class="col-lg-6 bg-secondary">
+      <%= render 'order_details', bike_order: @bike_order %>
+    </div>
+  </div>
+  <%= link_to 'Back', bike_orders_path, class: "btn btn-light min-width-btn" %>
+</div>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+  <% components_not_available(@bike_order.bike_order_items.map(&:component).uniq.compact).each do |c_unavailable| %>
+      $('.select-component option[value="<%= c_unavailable.id %>"]').prop('disabled', true);
+  <% end %>
+});
+</script>
