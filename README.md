@@ -36,12 +36,15 @@ El peso de la imagen del proyecto está en torno a 1.2GB
 * Los principales métodos de como la validación de restricciones o el calculo de precios de conjuntos de componentes los plantearía de nuevo con una recursión típica con su caso base y caso recursivo.
 * El TDD ha sido nulo en este proyecto, me veía limitado por el tiempo, crear un coverage completo de la funcionalidad es vital.
 
+
 ### Mejoras y cierre de leftovers
   * Crear la test suite
   * Implementar la gestión de roles para usuarios y atribuir la autorización a los distintos recursos de la aplicación.
   * Gestionar los CRUD de ComponentSet, Component y ComponentConstraints a un rol administrador de la aplicación.
   * Crear superadmin que pueda ver y editar todo
   * Pulir estilos y vistas
+  * Internacionalización (i18n) y multi currency.
+  * Softdelete de datos y facilitar la auditoría de datos.
 
 # Dificultades en el desarrollo (a modo de retrospectiva)
 Los principales handicaps que me he encontrado:
